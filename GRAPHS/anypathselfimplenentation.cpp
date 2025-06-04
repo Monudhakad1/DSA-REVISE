@@ -3,14 +3,14 @@ using namespace std;
 
 vector<list<int>> graph;
 int v; // number of vertices
-unordered_set<int>visited;
+unordered_set<int> visited;
 
 // Flag means bi-Directional
-void add_Edge(int source, int destination ,bool flag)
+void add_Edge(int source, int destination, bool flag)
 {
      graph[source].push_back(destination);
-     if(flag)
-     graph[destination].push_back(source);
+     if (flag)
+          graph[destination].push_back(source);
 }
 
 void display()
@@ -26,23 +26,22 @@ void display()
      }
 }
 
-
-bool DFS_anyPath(int s , int d){
-     if(s==d) return true;
+bool DFS_anyPath(int s, int d)
+{
+     if (s == d)
+          return true;
      visited.insert(s);
-     for(auto ele : graph[s]){
-          if(!visited.count(ele)){
-               bool result=DFS_anyPath(ele , d);
-               if(result) return true;
+     for (auto ele : graph[s])
+     {
+          if (!visited.count(ele))
+          {
+               bool result = DFS_anyPath(ele, d);
+               if (result)
+                    return true;
           }
      }
      return false;
 }
-
-
-
-
-
 
 int main()
 {
@@ -55,10 +54,10 @@ int main()
      cin >> e;
      while (e--)
      {
-          int s, d ;
+          int s, d;
           cin >> s >> d;
-          add_Edge(s, d ,true);
+          add_Edge(s, d, true);
      }
-
-     cout << DFS_anyPath(0,6) << endl;
+     visited.clear();
+     cout << DFS_anyPath(0, 6) << endl;
 }
