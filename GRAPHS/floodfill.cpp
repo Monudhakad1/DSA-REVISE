@@ -17,7 +17,7 @@ public:
         if(image[cr][cc]!=incolor) return ;
         image[cr][cc]=color;
         solution(image ,cr-1, cc,incolor,color);
-        solution(image ,cr+1, cc,incolor,color);
+        solution(image , cr+1, cc,incolor,color);
         solution(image ,cr, cc-1,incolor,color);
         solution(image ,cr, cc+1,incolor,color);
      }
