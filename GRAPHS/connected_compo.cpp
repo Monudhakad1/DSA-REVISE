@@ -20,6 +20,28 @@ void display(){
      }
 }
 
+void dfs(int node , unordered_set<int>&visited){
+     visited.insert(node);
+     for(auto neigh: graph[node]){
+          if(! visited.count(neigh)){
+                dfs(neigh,visited);
+          }
+     }
+}
+int connectedComponent(){
+     int res=0;
+     unordered_set<int>visited;
+     for(int i=0;i<vertices;i++){
+          //go every vertex 
+          if(visited.count(i) == 0){
+               res++;
+               dfs(i,visited);
+          }
+     }
+     return res;
+     
+}
+
 int main(){
     cin>>vertices;
     graph.resize(vertices,list<int>());
