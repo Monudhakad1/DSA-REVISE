@@ -1,0 +1,4 @@
+class demo{
+int i;
+int j ;
+}
